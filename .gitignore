@@ -1,0 +1,42 @@
+
+# moon
+.moon/cache
+.moon/docker
+
+# moon
+.moon/cache
+.moon/docker
+
+# The `outDir` for declarations
+lib/
+# Build cache manifests
+*.tsbuildinfo
+
+# Build
+dist
+.solid
+.output
+.vercel
+.netlify
+.vinxi
+
+# Environment
+.env
+.env*.local
+
+# dependencies
+node_modules
+
+# IDEs and editors
+.idea
+.project
+.classpath
+*.launch
+.settings/
+
+# Temp
+gitignore
+
+# System Files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,33 @@
+platform: 'bun'
+type: 'application'
+stack: 'frontend'
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+    - 'public/**/*'
+  outputs:
+    - '.output/**/*'
+    - '.vinxi/**/*'
+
+tasks:
+  dev:
+    command: 'vinxi dev --host'
+    platform: 'bun'
+    inputs:
+      - '@group(sources)'
+  build:
+    command: 'vinxi build'
+    platform: 'bun'
+    inputs:
+      - '@group(sources)'
+    outputs: 
+      - '@group(outputs)'
+  start:
+    command: 'vinxi start'
+    platform: 'bun'
+    inputs:
+      - '@group(sources)'
+  version:
+    command: 'vinxi version'
+    platform: 'bun'

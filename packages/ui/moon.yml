@@ -1,0 +1,14 @@
+platform: 'bun'
+type: 'library'
+stack: 'frontend'
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+
+tasks:
+  solidui:
+    command: 'solidui-cli'
+    platform: 'bun'
+    options:
+      interactive: true

@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.solid.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~ui/*": ["./src/*"],
+    },
+    "noEmit": false,
+  },
+  "include": [
+    "src/**/*",
+    "tailwind.config.ts"
+  ],
+  "references": []
+}
