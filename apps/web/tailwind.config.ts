@@ -1,10 +1,10 @@
-import config from "ui/tailwind.config";
 import type { Config } from 'tailwindcss'
+import baseConfig from "ui/tailwind.config";
 
 export default {
-  ...config,
+  ...baseConfig,
   content: [
-    ...config.content,
+    ...baseConfig.content,
     "../../packages/ui/**/*.{ts,tsx}"
   ],
 } satisfies Config

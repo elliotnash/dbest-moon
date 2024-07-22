@@ -16,6 +16,7 @@
   "exports": {
     "./tailwind.config": "./tailwind.config.ts",
     "./globals.css": "./src/globals.css",
+    "./lib/utils": ["./src/lib/utils.ts"],
     "./components/*": [
       "./src/components/*.tsx",
       "./src/components/*.ts"

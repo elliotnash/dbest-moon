@@ -11,6 +11,7 @@
     "postcss": "^8.4.39",
     "autoprefixer": "^10.4.19",
     "@kobalte/core": "^0.13.3",
+    "solid-icons": "^1.1.0",
     "ui": "workspace:*"
   },
   "devDependencies": {
