@@ -1,0 +1,29 @@
+platform: 'bun'
+type: 'application'
+stack: 'backend'
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+  db-sources:
+    - 'src/database/**/*'
+    - 'drizzle.config.ts'
+  migrations:
+    - 'drizzle/**/*'
+
+tasks:
+  dev:
+    command: 'bun run --watch src/index.ts'
+    platform: 'bun'
+    inputs:
+      - '@group(sources)'
+  generate-db:
+    command: 'drizzle-kit generate'
+    platform: 'bun'
+    inputs:
+      - '@group(db-sources)'
+  migrate-db:
+    command: 'drizzle-kit migrate'
+    platform: 'bun'
+    inputs:
+      - '@group(migrations)'
