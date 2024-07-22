@@ -10,10 +10,14 @@
   },
   "include": [
     "app.config.ts",
+    "../../packages/api-client/**/*",
     "../../packages/ui/**/*",
     "src/**/*"
   ],
   "references": [
+    {
+      "path": "../../packages/api-client"
+    },
     {
       "path": "../../packages/ui"
     }

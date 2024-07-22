@@ -7,7 +7,7 @@ import { Show, Suspense } from "solid-js";
 export default function Home() {
   const helloQuery = createQuery(() => ({
     queryKey: ['hello'],
-    queryFn: async () => (await api.index.get()).data!,
+    queryFn: async () => (await api.greeting.get()).data!,
   }))
 
   return (

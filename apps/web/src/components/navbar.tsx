@@ -25,7 +25,7 @@ export default function Navbar() {
 
         <div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <div class="flex items-center">
-            <a href="https://github.com/sek-consulting/solid-ui" target="_blank" rel="noreferrer">
+            <a href="https://github.com/elliotnash/dbest-moon" target="_blank" rel="noreferrer">
               <div
                 class={cn(
                   buttonVariants({
