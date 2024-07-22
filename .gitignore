@@ -33,6 +33,7 @@ node_modules
 .classpath
 *.launch
 .settings/
+.vscode/
 
 # Temp
 gitignore
