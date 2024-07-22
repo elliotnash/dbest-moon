@@ -5,7 +5,11 @@ import { isServer } from "solid-js/web"
 import { ColorModeProvider, ColorModeScript, cookieStorageManagerSSR } from "@kobalte/core"
 import { getCookie } from "vinxi/http"
 import Navbar from "~/components/navbar";
+import { QueryClientProvider, QueryClient } from "@tanstack/solid-query";
+import { SolidQueryDevtools } from "@tanstack/solid-query-devtools";
+
 import "ui/globals.css";
+import { MetaProvider } from "@solidjs/meta";
 
 function getServerCookies() {
   "use server"
@@ -14,17 +18,28 @@ function getServerCookies() {
 }
 
 export default function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        staleTime: 5000,
+      },
+    },
+  });
   const storageManager = cookieStorageManagerSSR(isServer ? getServerCookies() : document.cookie)
   return (
     <Router
       root={props => (
-        <>
-          <ColorModeScript storageType={storageManager.type} />
-          <ColorModeProvider storageManager={storageManager}>
-            <Navbar />
-            <Suspense>{props.children}</Suspense>
-          </ColorModeProvider>
-        </>
+        <MetaProvider>
+          <QueryClientProvider client={queryClient}>
+            <SolidQueryDevtools />
+            <ColorModeScript storageType={storageManager.type} />
+            <ColorModeProvider storageManager={storageManager}>
+              <Navbar />
+              <Suspense>{props.children}</Suspense>
+              </ColorModeProvider>
+          </QueryClientProvider>
+        </MetaProvider>
       )}
     >
       <FileRoutes />

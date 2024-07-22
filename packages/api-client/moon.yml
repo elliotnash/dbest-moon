@@ -1,0 +1,7 @@
+platform: 'bun'
+type: 'library'
+stack: 'infrastructure'
+
+fileGroups:
+  sources:
+    - 'src/**/*'

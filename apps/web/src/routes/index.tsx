@@ -1,25 +1,35 @@
 import { A } from "@solidjs/router";
+import { createQuery } from "@tanstack/solid-query";
 import Counter from "~/components/counter";
+import api from "api-client";
+import { Show, Suspense } from "solid-js";
 
 export default function Home() {
+  const helloQuery = createQuery(() => ({
+    queryKey: ['hello'],
+    queryFn: async () => (await api.index.get()).data!,
+  }))
+
   return (
     <main class="text-center mx-auto text-foreground/60 p-4">
-      <h1 class="max-6-xs text-6xl text-sky-500 font-thin uppercase my-16">Hello world!</h1>
-      <Counter />
-      <p class="mt-8">
-        Visit{" "}
-        <a href="https://solidjs.com" target="_blank" class="text-foreground hover:underline">
-          solidjs.com
-        </a>{" "}
-        to learn how to build Solid apps.
-      </p>
-      <p class="my-4">
-        <span>Home</span>
-        {" - "}
-        <A href="/about" class="text-foreground hover:underline">
-          About Page
-        </A>{" "}
-      </p>
+      <Suspense>
+        <h1 class="max-6-xs text-6xl text-sky-500 font-thin uppercase my-16">{helloQuery.data}</h1>
+        <Counter />
+        <p class="mt-8">
+          Visit{" "}
+          <a href="https://solidjs.com" target="_blank" class="text-foreground hover:underline">
+            solidjs.com
+          </a>{" "}
+          to learn how to build Solid apps.
+        </p>
+        <p class="my-4">
+          <span>Home</span>
+          {" - "}
+          <A href="/about" class="text-foreground hover:underline">
+            About Page
+          </A>{" "}
+        </p>
+      </Suspense>
     </main>
   );
 }

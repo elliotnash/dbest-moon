@@ -1,0 +1,12 @@
+{
+  "name": "api-client",
+  "main": "./src/index.ts",
+  "dependencies": {
+    "@elysiajs/eden": "^1.1.1",
+    "api": "workspace:*"
+  },
+  "devDependencies": {
+    "bun-types": "^1.1.20"
+  },
+  "module": "src/index.js"
+}
