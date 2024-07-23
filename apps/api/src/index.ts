@@ -22,7 +22,7 @@ const app = new Elysia()
     }),
     response: t.Void()
   })
-  .listen(env.HTTP_PORT);
+  .listen(env.API_PORT);
 
 export type App = typeof app;
 

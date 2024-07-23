@@ -2,9 +2,6 @@
   "private": true,
   "name": "dbest-moon",
   "infra": "monorepo",
-  "devDependencies": {
-    "@moonrepo/cli": "^1.27.2"
-  },
   "workspaces": [
     "apps/*",
     "packages/*"

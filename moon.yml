@@ -1,0 +1,7 @@
+platform: 'bun'
+type: 'configuration'
+
+fileGroups:
+  tsconfig:
+    - 'tsconfig.json'
+    - 'tsconfig.*.json'

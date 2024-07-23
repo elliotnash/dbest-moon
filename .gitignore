@@ -3,9 +3,8 @@
 .moon/cache
 .moon/docker
 
-# moon
-.moon/cache
-.moon/docker
+# Docker data
+data
 
 # The `outDir` for declarations
 lib/
