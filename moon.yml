@@ -1,7 +1,10 @@
-platform: 'bun'
+platform: 'system'
 type: 'configuration'
 
-fileGroups:
-  tsconfig:
-    - 'tsconfig.json'
-    - 'tsconfig.*.json'
+tasks:
+  docker-dev:
+    command: docker compose -f docker-compose.dev.yml up
+    local: true
+  docker-deploy:
+    command: docker compose -f docker-compose.prod.yml --build --force-recreate -d up
+    local: true

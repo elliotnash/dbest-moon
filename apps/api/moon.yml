@@ -17,6 +17,11 @@ tasks:
     platform: 'bun'
     inputs:
       - '@group(sources)'
+  start:
+    command: 'bun run src/index.ts'
+    platform: 'bun'
+    inputs:
+      - '@group(sources)'
   generate-db:
     command: 'drizzle-kit generate'
     platform: 'bun'

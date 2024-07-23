@@ -12,7 +12,7 @@ fileGroups:
 
 tasks:
   dev:
-    command: 'vinxi dev --host'
+    command: 'vinxi dev'
     platform: 'bun'
     inputs:
       - '@group(sources)'
@@ -28,6 +28,8 @@ tasks:
     platform: 'bun'
     inputs:
       - '@group(sources)'
+    deps:
+      - build
   version:
     command: 'vinxi version'
     platform: 'bun'

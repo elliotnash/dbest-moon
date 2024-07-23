@@ -7,18 +7,21 @@ services:
       POSTGRES_USER: ${DB_USER:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-example}
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ./data/prod/postgres:/var/lib/postgresql/data
 
   app:
     image: dbest-moon/app:latest
     restart: always
     build:
       context: .
+      dockerfile: ./Dockerfile.prod
     depends_on:
       - database
     ports:
       - ${WEB_PORT:-3000}:3000
       - ${API_PORT:-8080}:8080
+    tty: true
+    init: true
     environment:
       WEB_PORT: 3000
       API_PORT: 8080
@@ -28,4 +31,5 @@ services:
       DB_HOST: database
       DB_PORT: 5432
     volumes:
-      - ./data/drizzle:/app/apps/api/drizzle
+      - ./data/prod/drizzle:/app/apps/api/drizzle
+      - ./data/prod/moon-cache:/app/.moon/cache

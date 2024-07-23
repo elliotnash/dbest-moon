@@ -1,0 +1,12 @@
+FROM node:latest
+
+# Install moon cli
+RUN npm install -g @moonrepo/cli
+
+WORKDIR /app
+COPY --chown=app:app . /app
+RUN rm -rf apps/api/drizzle
+
+EXPOSE 3000 8080
+
+CMD ["moon", ":start"]
