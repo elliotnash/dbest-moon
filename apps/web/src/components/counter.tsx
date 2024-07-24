@@ -1,17 +1,8 @@
 import { createMutation, createQuery } from "@tanstack/solid-query";
 import { createSignal } from "solid-js";
 import { Button } from "ui/components/button";
-import api from "api-client";
-import { getCookie } from "vinxi/http";
+import api from "~/api";
 import { isServer } from "solid-js/web";
-
-function getServerDeviceIdHeaders() {
-  "use server";
-  const deviceId = getCookie("deviceId");
-  return {
-    cookie: `deviceId=${deviceId}`
-  };
-}
 
 export default function Counter() {
   // const [count, setCount] = createSignal(0);
@@ -19,13 +10,13 @@ export default function Counter() {
   const clicksQuery = createQuery(() => ({
     queryKey: ['clicks'],
     queryFn: async () => {
-      console.log(`We're calling clicksQuery from ${isServer ? "server" : "client"}`);
+      // console.log(`We're calling clicksQuery from ${isServer ? "server" : "client"}`);
 
-      let headers = isServer ? getServerDeviceIdHeaders() : undefined;
+      // let headers = isServer ? getServerDeviceIdHeaders() : undefined;
 
-      console.log(`headers = ${Object.entries(headers)}`);
+      // console.log(`headers = ${Object.entries(headers)}`);
 
-      return (await api.clicks.get(headers)).data!
+      return (await api.clicks.get()).data!
     }
   }))
 

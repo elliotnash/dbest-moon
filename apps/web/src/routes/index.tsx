@@ -1,7 +1,7 @@
 import { A } from "@solidjs/router";
 import { createQuery } from "@tanstack/solid-query";
 import Counter from "~/components/counter";
-import api from "api-client";
+import api from "~/api";
 import { Show, Suspense } from "solid-js";
 
 export default function Home() {

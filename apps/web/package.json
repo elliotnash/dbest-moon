@@ -2,23 +2,27 @@
   "name": "web",
   "type": "module",
   "dependencies": {
+    "@elysiajs/eden": "^1.1.1",
+    "@kobalte/core": "^0.13.3",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.14.1",
     "@solidjs/start": "^1.0.6",
-    "solid-js": "^1.8.18",
-    "vinxi": "^0.4.1",
-    "tailwindcss": "^3.4.6",
-    "postcss": "^8.4.39",
-    "autoprefixer": "^10.4.19",
-    "@kobalte/core": "^0.13.3",
-    "solid-icons": "^1.1.0",
     "@tanstack/solid-query": "^5.51.9",
     "@tanstack/solid-query-devtools": "^5.51.9",
+    "api": "workspace:*",
+    "api-client": "workspace:*",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "solid-icons": "^1.1.0",
+    "solid-js": "^1.8.18",
+    "tailwindcss": "^3.4.6",
+    "set-cookie-parser": "^2.6.0",
 
     "ui": "workspace:*",
-    "api-client": "workspace:*"
+    "vinxi": "^0.4.1"
   },
   "devDependencies": {
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "^4.3.2",
+    "@types/set-cookie-parser": "^2.4.10"
   }
 }

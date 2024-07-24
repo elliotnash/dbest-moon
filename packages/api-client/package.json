@@ -2,7 +2,6 @@
   "name": "api-client",
   "main": "./src/index.ts",
   "dependencies": {
-    "@elysiajs/eden": "^1.1.1",
     "api": "workspace:*"
   },
   "devDependencies": {
