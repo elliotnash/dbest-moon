@@ -8,6 +8,7 @@ data
 
 # The `outDir` for declarations
 lib/
+!**/src/lib
 # Build cache manifests
 *.tsbuildinfo
 
