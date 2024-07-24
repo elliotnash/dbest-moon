@@ -4,10 +4,10 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   vite: {
     plugins: [tsconfigPaths()],
-    server: {
-      hmr: {
-        port: 4444,
-      }
-    }
+    // server: {
+    //   hmr: {
+    //     port: 4444,
+    //   }
+    // }
   }
 });

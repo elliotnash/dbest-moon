@@ -2,7 +2,7 @@
   "name": "ui",
   "type": "module",
   "dependencies": {
-    "@kobalte/core": "^0.13.3",
+    "@kobalte/core": "^0.13.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "solid-js": "^1.8.18",

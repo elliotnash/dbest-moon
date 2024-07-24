@@ -2,6 +2,7 @@ import { treaty } from "@elysiajs/eden";
 import { isServer } from "solid-js/web";
 import { parse } from "set-cookie-parser";
 import { parseCookies, setCookie } from "vinxi/http";
+import { App } from "api";
 
 // Get client cookies from ssr context
 function getServerCookies() {

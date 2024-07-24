@@ -34,16 +34,24 @@ const app = new Elysia()
     },
     (app) => app
       .get("/greeting", () => "Hello Elysia!" as const, {
-        response: t.Literal("Hello Elysia!")
+        response: t.Literal("Hello Elysia!", {
+          examples: ["Hello Elysia!"]
+        })
       })
       .put("/click", async ({ cookie: { deviceId } }) => {
         await db.insert(clicks).values({
           deviceId: deviceId.value!,
           time: new Date()
         });
+        const select = await db.select({ count: count() })
+          .from(clicks)
+          .where(eq(clicks.deviceId, deviceId.value!));
+        return select[0].count;
       },
       {
-        response: t.Void()
+        response: t.Number({
+          examples: [1]
+        })
       })
       .get("/clicks", async ({ cookie: { deviceId } }) => {
         const select = await db.select({ count: count() })
@@ -52,8 +60,18 @@ const app = new Elysia()
         return select[0].count;
       },
       {
-        response: t.Number()
+        response: t.Number({
+          examples: [49]
+        })
       })
+      .delete("/clicks", async ({ cookie: { deviceId } }) => {
+        console.log(`Calling delete with ${deviceId}`);
+        await db.delete(clicks).where(eq(clicks.deviceId, deviceId.value!));
+      },
+      {
+        response: t.Void()
+      }
+    )
   )
   .listen(env.API_PORT);
 
