@@ -16,4 +16,4 @@ export const envSchema = t.Object({
   DB_MAX_CONNECTIONS: t.Numeric({ default: 10 })
 });
 
-export default parse(envSchema, process.env);
+export default parse(envSchema, { ...process.env });

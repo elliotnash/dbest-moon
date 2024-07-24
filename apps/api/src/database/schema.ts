@@ -6,5 +6,8 @@ export const clicks = pgTable('users', {
   time: timestamp('time').notNull(),
 });
 
-export const insertClickSchema = createInsertSchema(clicks);
-export const selectClickSchema = createSelectSchema(clicks);
+export const clickInsertSchema = createInsertSchema(clicks);
+export type ClickInsert = typeof clickInsertSchema.static;
+
+export const clickSelectSchema = createSelectSchema(clicks);
+export type ClickSelect = typeof clickSelectSchema.static;

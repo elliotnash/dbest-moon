@@ -3,7 +3,10 @@ type: 'configuration'
 
 tasks:
   docker-dev:
-    command: docker compose -f docker-compose.dev.yml up
+    command: docker compose -f docker-compose.dev.yml run --rm --service-ports app moon
+    local: true
+  docker-prod:
+    command: docker compose -f docker-compose.dev.yml run --rm --service-ports app moon
     local: true
   docker-deploy:
     command: docker compose -f docker-compose.prod.yml --build --force-recreate -d up

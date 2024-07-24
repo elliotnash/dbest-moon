@@ -13,12 +13,12 @@ fileGroups:
 
 tasks:
   dev:
-    command: 'bun run --watch src/index.ts'
+    command: 'bun --bun run --watch src/index.ts'
     platform: 'bun'
     inputs:
       - '@group(sources)'
   start:
-    command: 'bun run src/index.ts'
+    command: 'bun --bun run src/index.ts'
     platform: 'bun'
     inputs:
       - '@group(sources)'
@@ -27,8 +27,14 @@ tasks:
     platform: 'bun'
     inputs:
       - '@group(db-sources)'
+      - '@group(sources)'
+      - '@group(migrations)'
   migrate-db:
     command: 'drizzle-kit migrate'
     platform: 'bun'
     inputs:
       - '@group(migrations)'
+  inspect-db:
+    command: 'drizzle-kit studio --host=0.0.0.0'
+    platform: 'bun'
+    local: true

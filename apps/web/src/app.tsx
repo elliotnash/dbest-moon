@@ -26,7 +26,8 @@ export default function App() {
       },
     },
   });
-  const storageManager = cookieStorageManagerSSR(isServer ? getServerCookies() : document.cookie)
+  const storageManager = cookieStorageManagerSSR(isServer ? getServerCookies() : document.cookie);
+  storageManager.get
   return (
     <Router
       root={props => (
