@@ -13,17 +13,17 @@ export default function Navbar() {
   return (
     <header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div class="container flex h-14 max-w-screen-2xl items-center">
-        <div class="mr-4 hidden md:flex">
+        <div class="mr-4 flex">
           <a href="/" class="mr-6 flex items-center space-x-2">
-            <span class="hidden font-bold sm:inline-block">DBEST-Moon</span>
+            <span class="font-bold inline-block">DBEST-Moon</span>
           </a>
-          <nav class="flex items-center gap-4 text-sm lg:gap-6">
+          <nav class="hidden sm:flex items-center gap-4 text-sm lg:gap-6">
             <a href="/" class={`${active("/")} transition-colors hover:text-foreground/80`}>Home</a>
             <a href="/about" class={`${active("/about")} transition-colors hover:text-foreground/80`}>About</a>
           </nav>
         </div>
 
-        <div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        <div class="flex flex-1 items-center space-x-2 justify-end">
           <div class="flex items-center">
             <a href="https://github.com/elliotnash/dbest-moon" target="_blank" rel="noreferrer">
               <div
