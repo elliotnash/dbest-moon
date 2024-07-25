@@ -1,18 +1,105 @@
-
+// Misc links
 :dbest-stack-url: https://github.com/itsyoboieltr/dbest-stack
 :dbest-stack-image-url: https://github.com/itsyoboieltr/dbest-stack/assets/72046715/b04f7074-80e7-4af8-bdcd-5ce532cca213
 
+// Stack links
+:moonrepo-url: https://moonrepo.dev/moon
+:drizzle-url: https://orm.drizzle.team
+:postgresql-url: https://www.postgresql.org/
+:bun-url: https://bun.sh
+:elysia-url: https://elysiajs.com
+:solidstart-url: https://start.solidjs.com/
+:solid-ui-url: https://www.solid-ui.com/
+:tailwind-url: https://tailwindcss.com
 
-= image:{dbest-stack-image-url}[DBEST moon,30] DBEST moon
+// Install links
+:moonrepo-install-url: https://moonrepo.dev/docs/install
+:docker-install-url: https://docs.docker.com/get-docker/
 
-Based on the amazing {dbest-stack-url}[DBEST stack] by itsyoboieltr.
+:drizzle-studio-url: https://orm.drizzle.team/drizzle-studio/overview
+
+// Files
+:db-schema-path: link:apps/api/src/database/schema.ts
+
+= image:{dbest-stack-image-url}[DBEST moon,23] DBEST moon
+
+*Based on the amazing {dbest-stack-url}[DBEST stack] by itsyoboieltr.*
 
 The `DBEST moon` stack is a bun-based 🔥 `BLAZINGLY FAST` 🔥 full-stack `100% type-safe` web development solution that provides `everything` you need to build a `production-ready` web app based on the performant and scalable SolidStart meta-framework. It consists of:
 
-- https://moonrepo.dev/moon[Moonrepo]
-- https://orm.drizzle.team[Drizzle]
-- https://bun.sh[Bun]
-- https://elysiajs.com[Elysia]
-- https://start.solidjs.com/[SolidStart]
-- https://www.solid-ui.com/[Solid UI]
-- https://tailwindcss.com[Tailwind CSS]
+- {moonrepo-url}[Moonrepo]
+- {drizzle-url}[Drizzle]
+- {postgresql-url}[PostgreSQL]
+- {bun-url}[Bun]
+- {elysia-url}[Elysia]
+- {solidstart-url}[SolidStart]
+- {solid-ui-url}[Solid UI]
+- {tailwind-url}[Tailwind CSS]
+
+== Creating a project
+
+DBEST moon uses moonrepo as a monorepo management tool. Ensure moonrepo is {moonrepo-install-url}[installed].
+
+Create a new project.
+
+```bash
+bun create elliotnash/dbest-moon
+```
+
+Optionally specify a name for the destination folder. If no destination is specified, the name `dbest-moon` will be used.
+
+```bash
+bun create elliotnash/dbest-moon my-app
+```
+
+Bun will perform the following steps:
+
+- Download the `template`.
+- Copy all template files into the `destination folder`.
+- Install dependencies with `bun i`.
+- Initialize a fresh Git repo. Opt out with the `--no-git` flag.
+
+== Developing
+
+Moon uses postgresql as a database. The easist way to get started is using the included docker-compose which includes a preconfigured PostgreSQL instance.
+
+Install {docker-install-url}[Docker].
+
+Copy `.example.env` to `.env`
+
+You can start the `development server` with:
+
+```bash
+moon :docker-dev -- :dev
+```
+
+This will start the development docker container and bind mount the project root to `/app`
+
+
+== Production
+
+Bring up a `production` docker container with:
+```
+moon :docker-deploy
+```
+
+NOTE: This will automatically build the app as the `:start` task depends on `:build`
+
+== Database
+
+Any time you update the database {db-schema-path}[schema], a database migration will need to be performed.
+
+To generate db migrations run:
+```bash
+moon :docker-<dev|prod> -- :generate-db
+```
+
+To apply these migrations run:
+```bash
+moon :docker-<dev|prod> -- :migrate-db
+```
+
+To inspect the database using {drizzle-studio-url}[Drizzle Studio] run:
+```bash
+moon :docker-<dev|prod> -- :inspect-db
+```
