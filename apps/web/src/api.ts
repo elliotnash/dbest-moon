@@ -1,25 +1,12 @@
 import { treaty } from "@elysiajs/eden";
 import { isServer } from "solid-js/web";
 import { parse } from "set-cookie-parser";
-import { parseCookies, setCookie } from "vinxi/http";
 import { App } from "api";
 
-// Get client cookies from ssr context
-function getServerCookies() {
-  "use server";
-  const cookies = parseCookies();
-  let cookie = "";
-  for (const [key, value] of Object.entries(cookies)) {
-    cookie += `;${key}=${value}`;
-  }
-  return cookie.substring(1);
-}
-
-function setServerCookies(response: Response) {
-  "use server";
-  for (const cookie of parse(response)) {
-    setCookie(cookie.name, cookie.value, {...cookie});
-  }
+let getHeaders;
+let setResponseHeaders;
+if (isServer) {
+  ({ getHeaders, setResponseHeaders } = await import("vinxi/http"));
 }
 
 export default treaty<App>('http://localhost:8080', {
@@ -27,18 +14,15 @@ export default treaty<App>('http://localhost:8080', {
     credentials: 'include',
   },
   headers(path, options) {
-    // If ssr context, copy over client cookies
+    // If ssr context, copy over client headers.
     if (isServer) {
-      const headers = {
-        cookie: getServerCookies(),
-      };
-      return headers
+      return getHeaders();
     }
   },
   onResponse(response) {
-    // If ssr context, set cookies on client.
+    // If ssr context, set headers on client.
     if (isServer) {
-      setServerCookies(response)
+      setResponseHeaders(response.headers);
     }
   }
 });

@@ -1,5 +1,6 @@
 import { defineConfig } from "@solidjs/start/config";
 import tsconfigPaths from 'vite-tsconfig-paths';
+import devtools from 'solid-devtools/vite';
 
 const hmrPorts = {
   client: 4440,
@@ -9,7 +10,12 @@ const hmrPorts = {
 
 export default defineConfig({
   vite: ({ router }) => ({
-    plugins: [tsconfigPaths()],
+    plugins: [
+      tsconfigPaths(),
+      devtools({
+        autoname: true,
+      })
+    ],
     server: {
       hmr: {
         port: hmrPorts[router]
