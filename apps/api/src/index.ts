@@ -65,7 +65,6 @@ const app = new Elysia()
         })
       })
       .delete("/clicks", async ({ cookie: { deviceId } }) => {
-        console.log(`Calling delete with ${deviceId}`);
         await db.delete(clicks).where(eq(clicks.deviceId, deviceId.value!));
       },
       {
