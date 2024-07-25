@@ -7,6 +7,7 @@ import { getCookie } from "vinxi/http"
 import Navbar from "~/components/navbar";
 import { QueryClientProvider, QueryClient } from "@tanstack/solid-query";
 import { SolidQueryDevtools } from "@tanstack/solid-query-devtools";
+import 'solid-devtools';
 
 import "ui/globals.css";
 import { MetaProvider } from "@solidjs/meta";
@@ -33,7 +34,7 @@ export default function App() {
       root={props => (
         <MetaProvider>
           <QueryClientProvider client={queryClient}>
-            <SolidQueryDevtools />
+            <SolidQueryDevtools buttonPosition="bottom-left" />
             <ColorModeScript storageType={storageManager.type} />
             <ColorModeProvider storageManager={storageManager}>
               <Navbar />

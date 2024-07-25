@@ -22,8 +22,9 @@ const app = new Elysia()
         deviceId: t.Optional(t.String())
       }),
       // Ensure deviceId is set for the following routes
-      beforeHandle({ set, cookie: { deviceId } }) {
+      beforeHandle({ set: _, cookie: { deviceId } }) {
         if (!deviceId.value) {
+          console.log("creating cookie");
           deviceId.set({
             value: createId(),
             path: "/"

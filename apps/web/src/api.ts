@@ -1,44 +1,38 @@
 import { treaty } from "@elysiajs/eden";
 import { isServer } from "solid-js/web";
 import { parse } from "set-cookie-parser";
-import { parseCookies, setCookie } from "vinxi/http";
 import { App } from "api";
 
-// Get client cookies from ssr context
-function getServerCookies() {
+const { getHeaders, setResponseHeaders } = await import("vinxi/http");
+
+// Get client headers from ssr context
+function getServerHeaders() {
   "use server";
-  const cookies = parseCookies();
-  let cookie = "";
-  for (const [key, value] of Object.entries(cookies)) {
-    cookie += `;${key}=${value}`;
-  }
-  return cookie.substring(1);
+  return getHeaders();
 }
 
-function setServerCookies(response: Response) {
+function setServerHeaders(headers: Headers) {
   "use server";
-  for (const cookie of parse(response)) {
-    setCookie(cookie.name, cookie.value, {...cookie});
-  }
+  setResponseHeaders(headers);
 }
 
 export default treaty<App>('http://localhost:8080', {
   fetch: {
     credentials: 'include',
   },
-  headers(path, options) {
-    // If ssr context, copy over client cookies
-    if (isServer) {
-      const headers = {
-        cookie: getServerCookies(),
-      };
-      return headers
-    }
-  },
-  onResponse(response) {
-    // If ssr context, set cookies on client.
-    if (isServer) {
-      setServerCookies(response)
-    }
-  }
+  // headers(path, options) {
+  //   // If ssr context, copy over client headers.
+  //   if (isServer) {
+  //     console.log("we're making a request server side");
+  //     // return getServerHeaders();
+  //   } else {
+  //     console.log("we're making a request client side");
+  //   }
+  // },
+  // onResponse(response) {
+  //   // If ssr context, set headers on client.
+  //   if (isServer) {
+  //     // setServerHeaders(response.headers)
+  //   }
+  // }
 });
