@@ -91,7 +91,7 @@ const DialogFooter: Component<ComponentProps<"div">> = (props) => {
   const [, rest] = splitProps(props, ["class"])
   return (
     <div
-      class={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", props.class)}
+      class={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-y-2", props.class)}
       {...rest}
     />
   )
