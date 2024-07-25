@@ -12,6 +12,7 @@
     "app.config.ts",
     "../../packages/api-client/**/*",
     "../../packages/ui/**/*",
+    "../api/**/*",
     "src/**/*"
   ],
   "references": [
@@ -20,6 +21,9 @@
     },
     {
       "path": "../../packages/ui"
+    },
+    {
+      "path": "../api"
     }
   ]
 }
