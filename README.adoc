@@ -1,0 +1,18 @@
+
+:dbest-stack-url: https://github.com/itsyoboieltr/dbest-stack
+:dbest-stack-image-url: https://github.com/itsyoboieltr/dbest-stack/assets/72046715/b04f7074-80e7-4af8-bdcd-5ce532cca213
+
+
+= image:{dbest-stack-image-url}[DBEST moon,30] DBEST moon
+
+Based on the amazing {dbest-stack-url}[DBEST stack] by itsyoboieltr.
+
+The `DBEST moon` stack is a bun-based 🔥 `BLAZINGLY FAST` 🔥 full-stack `100% type-safe` web development solution that provides `everything` you need to build a `production-ready` web app based on the performant and scalable SolidStart meta-framework. It consists of:
+
+- https://moonrepo.dev/moon[Moonrepo]
+- https://orm.drizzle.team[Drizzle]
+- https://bun.sh[Bun]
+- https://elysiajs.com[Elysia]
+- https://start.solidjs.com/[SolidStart]
+- https://www.solid-ui.com/[Solid UI]
+- https://tailwindcss.com[Tailwind CSS]
